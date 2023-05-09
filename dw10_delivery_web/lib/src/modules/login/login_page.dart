@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
             break;
           case LoginStateStatus.success:
             hideLoader();
-            Modular.to.navigate('/home');
+            Modular.to.navigate('/');
             break;
           case LoginStateStatus.error:
             hideLoader();
@@ -141,6 +141,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
                             Validatorless.required('E-mail Obrigatório'),
                             Validatorless.email('E-mail inválido'),
                           ]),
+                          initialValue: 'admin@email.com',
                         ),
                         const SizedBox(
                           height: 20,
@@ -154,6 +155,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
                           ),
                           validator:
                               Validatorless.required('Password Obrigatório'),
+                          initialValue: '123',
                         ),
                         const SizedBox(
                           height: 30,
