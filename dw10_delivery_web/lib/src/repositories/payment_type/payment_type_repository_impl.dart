@@ -13,12 +13,12 @@ class PaymentTypeRepositoryImpl implements PaymentTypeRepository {
   PaymentTypeRepositoryImpl(this._dio);
 
   @override
-  Future<List<PaymentTypeModel>> findAll(bool? enable) async {
+  Future<List<PaymentTypeModel>> findAll(bool? enabled) async {
     try {
       final paymentResult = await _dio.auth().get(
         '/payment-types',
         queryParameters: {
-          if (enable != null) 'enable': enable,
+          if (enabled != null) 'enabled': enabled,
         },
       );
       return paymentResult.data
@@ -57,7 +57,7 @@ class PaymentTypeRepositoryImpl implements PaymentTypeRepository {
         );
       } else {
         await client.post(
-          '/payment-type',
+          '/payment-types',
           data: model.toMap(),
         );
       }
