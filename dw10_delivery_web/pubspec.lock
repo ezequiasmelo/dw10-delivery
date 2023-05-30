@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  brasil_fields:
+    dependency: "direct main"
+    description:
+      name: brasil_fields
+      sha256: "3caea1fa56a025106014393c22dc651de8f1b17faf6cdcc504c8127a17cf2d1e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.9.1"
   build:
     dependency: transitive
     description:

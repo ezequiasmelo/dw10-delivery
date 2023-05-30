@@ -19,6 +19,7 @@ dependencies:
   awesome_snackbar_content: ^0.1.3
   dio: ^5.1.1
   validatorless: ^1.2.3
+  brasil_fields: ^1.9.1
 
 dev_dependencies:
   flutter_test:
