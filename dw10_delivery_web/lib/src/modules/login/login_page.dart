@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
   final controller = Modular.get<LoginController>();
   late final ReactionDisposer statusReactionDisposer;
 
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
 
@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
   }
 
   void _formSubmit() {
-    final formValid = formKey.currentState?.validate() ?? false;
+    final formValid = _formKey.currentState?.validate() ?? false;
     if (formValid) {
       controller.login(emailEC.text, passwordEC.text);
     }
@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
     return Scaffold(
       backgroundColor: context.colors.black,
       body: Form(
-        key: formKey,
+        key: _formKey,
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
