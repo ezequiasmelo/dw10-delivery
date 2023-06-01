@@ -69,7 +69,7 @@ class ProductRepositoryImpl implements ProductRepository {
       final data = productModel.toMap();
 
       if (productModel.id != null) {
-        await client.put('/products/$productModel.id', data: data);
+        await client.put('/products/${productModel.id}', data: data);
       } else {
         await client.post('/products', data: data);
       }
