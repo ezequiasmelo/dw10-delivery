@@ -81,6 +81,24 @@ mixin _$OrderController on OrderControllerBase, Store {
     });
   }
 
+  late final _$_orderSelectedAtom =
+      Atom(name: 'OrderControllerBase._orderSelected', context: context);
+
+  OrderDto? get orderSelected {
+    _$_orderSelectedAtom.reportRead();
+    return super._orderSelected;
+  }
+
+  @override
+  OrderDto? get _orderSelected => orderSelected;
+
+  @override
+  set _orderSelected(OrderDto? value) {
+    _$_orderSelectedAtom.reportWrite(value, super._orderSelected, () {
+      super._orderSelected = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
