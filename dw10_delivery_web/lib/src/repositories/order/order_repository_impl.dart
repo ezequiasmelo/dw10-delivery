@@ -17,7 +17,7 @@ class OrderRepositoryImpl implements OrderRepository {
   Future<void> changeStatus(int id, OrderStatus status) async {
     try {
       await _dio.auth().put(
-        '/order/$id',
+        '/orders/$id',
         data: {
           'status': status.acronym,
         },

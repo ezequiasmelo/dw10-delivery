@@ -15,6 +15,7 @@ enum OrderStateStatus {
   loaded,
   error,
   showDetailModal,
+  statusChanged,
 }
 
 class OrderController = OrderControllerBase with _$OrderController;
@@ -45,6 +46,13 @@ abstract class OrderControllerBase with Store {
     _today = DateTime(todayNow.year, todayNow.month, todayNow.day);
   }
 
+  @action
+  void changeStatusFilter(OrderStatus? status) {
+    _statusFilter = status;
+    findOrders();
+  }
+
+  @action
   Future<void> findOrders() async {
     try {
       _status = OrderStateStatus.loading;
@@ -57,9 +65,17 @@ abstract class OrderControllerBase with Store {
     }
   }
 
+  @action
   Future<void> showDetailModal(OrderModel model) async {
     _status = OrderStateStatus.loading;
     _orderSelected = await _getOrderById(model);
     _status = OrderStateStatus.showDetailModal;
+  }
+
+  @action
+  Future<void> changeStatus(OrderStatus status) async {
+    _status = OrderStateStatus.loading;
+    await _orderRepository.changeStatus(_orderSelected!.id, status);
+    _status = OrderStateStatus.statusChanged;
   }
 }
