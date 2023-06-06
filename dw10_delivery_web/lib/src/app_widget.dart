@@ -19,6 +19,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp.router(
       title: 'Application Name',
       theme: ThemeConfig.theme,
+      debugShowCheckedModeBanner: false,
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
     );

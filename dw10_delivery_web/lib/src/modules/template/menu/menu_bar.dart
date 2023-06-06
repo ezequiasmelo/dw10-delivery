@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../core/ui/helpers/history_back_listener.dart';
 import '../../../core/ui/helpers/size_extensions.dart';
 import 'menu_button.dart';
 import 'menu_enum.dart';
@@ -12,9 +15,16 @@ class MenuBar extends StatefulWidget {
   State<MenuBar> createState() => _MenuBarState();
 }
 
-class _MenuBarState extends State<MenuBar> {
+class _MenuBarState extends State<MenuBar> with HistoryBackListener {
   Menu? selectedMenu;
   var collapsed = false;
+
+  @override
+  void onHistoryBack(Event event) {
+    setState(() {
+      selectedMenu = Menu.findByPath(Modular.to.path);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
